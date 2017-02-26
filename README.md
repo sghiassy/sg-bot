@@ -1,7 +1,7 @@
 If you're on a new machine, you will need to configure the keys again by running
 
 ```
-serverless config credentials --provider aws --key XXXXXXXX --secret XXXXXXX
+serverless config credentials --provider aws --profile sg-bot --key XXXXXXXX --secret XXXXXXX
 ```
 
 ### Passwords
