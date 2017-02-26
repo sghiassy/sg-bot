@@ -28,10 +28,16 @@ functions:
   bot:
     handler: src/bot.hello
     description: Have the bot say hi to you
+    environment:
+      HIPCHAT_AUTH_TOKEN: ${self:custom.secrets.HIPCHAT_AUTH_TOKEN}
     events:
     - http:
         path: hello # path in the url
         method: get
 
+custom:
+  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+
 plugins:
   - serverless-offline
+  - serverless-secrets-plugin

@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const http = require('superagent');
-const AUTH_TOKEN = require('../config/secrets')['hipchat']['auth_token'];
+const HIPCHAT_AUTH_TOKEN = process.env.HIPCHAT_AUTH_TOKEN;
 
 module.exports.hello = (event, context, callback) => {
   const usersName = _.get(event, 'queryStringParameters.name', '');
@@ -10,7 +10,7 @@ module.exports.hello = (event, context, callback) => {
 
   http
     .post('https://h34t.hipchat.com/v2/room/3622915/notification')
-    .query({'auth_token': AUTH_TOKEN})
+    .query({'auth_token': HIPCHAT_AUTH_TOKEN})
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .send({

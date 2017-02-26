@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
+    "serverless-secrets": "^2.0.2",
+    "serverless-secrets-plugin": "^0.0.1",
     "superagent": "^3.5.0"
   },
   "devDependencies": {
