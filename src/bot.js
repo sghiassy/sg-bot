@@ -1,10 +1,10 @@
 'use strict';
 
+const _ = require('lodash');
+
 module.exports.hello = (event, context, callback) => {
-  let message = 'Hi';
-  if (event.queryStringParameters.name != undefined) {
-    message += ` ${event.queryStringParameters.name}`;
-  }
+  const usersName = _.get(event, '.queryStringParameters.name', '');
+  const message = _.trim(`Hi ${usersName}`);
 
   const response = {
     statusCode: 200,
