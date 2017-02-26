@@ -6,6 +6,10 @@
   "repository": "git@github.com:sghiassy/sg-bot.git",
   "author": "Shaheen Ghiassy <shaheen.ghiassy@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "deploy:dev": "serverless deploy --stage dev",
+    "deploy:prod": "serverless deploy --stage prod"
+  },
   "dependencies": {
     "lodash": "^4.17.4"
   },
