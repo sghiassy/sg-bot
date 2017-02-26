@@ -19,6 +19,7 @@ service: bot
 
 provider:
   name: aws
+  profile: sg-bot # used to lookup credentials in ~/.aws/credentials
   region: us-west-2
   runtime: nodejs4.3
 
