@@ -3,7 +3,7 @@
 const _ = require('lodash');
 
 module.exports.hello = (event, context, callback) => {
-  const usersName = _.get(event, '.queryStringParameters.name', '');
+  const usersName = _.get(event, 'queryStringParameters.name', '');
   const message = _.trim(`Hi ${usersName}`);
 
   const response = {
