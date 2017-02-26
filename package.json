@@ -1,0 +1,12 @@
+{
+  "name": "sg-bot",
+  "version": "1.0.0",
+  "description": "A HipChat bot by Shaheen Ghiassy",
+  "main": "index.js",
+  "repository": "git@github.com:sghiassy/sg-bot.git",
+  "author": "Shaheen Ghiassy <shaheen.ghiassy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-offline": "^3.9.0"
+  }
+}
