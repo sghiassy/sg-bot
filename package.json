@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "deploy:dev": "serverless deploy --stage dev",
-    "deploy:prod": "serverless deploy --stage prod"
+    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:bot:prod:fast": "serverless deploy function --stage prod --function bot"
   },
   "dependencies": {
     "lodash": "^4.17.4"

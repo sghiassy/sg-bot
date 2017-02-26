@@ -20,11 +20,12 @@ service: bot
 provider:
   name: aws
   profile: sg-bot # used to lookup credentials in ~/.aws/credentials
+  state: prod
   region: us-west-2
   runtime: nodejs4.3
 
 functions:
-  hello:
+  bot:
     handler: src/bot.hello
     description: Have the bot say hi to you
     events:
