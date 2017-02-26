@@ -12,7 +12,8 @@
     "deploy:bot:prod:fast": "serverless deploy function --stage prod --function bot"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "superagent": "^3.5.0"
   },
   "devDependencies": {
     "serverless-offline": "^3.9.0"
