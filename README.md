@@ -2,7 +2,7 @@
 
 ## HipChat Keys
 
-The HipChat secrets are stored in an encyprted file `secrets.prod.yml`. See [Example](https://github.com/serverless/examples/tree/master/aws-node-env-variables-encrypted-in-a-file) for more info
+The HipChat secrets are stored in an encyprted file `secrets.prod.yml`. See [Example](https://github.com/serverless/examples/tree/master/aws-node-env-variables-encrypted-in-a-file) for more info.
 
 ## AWS Keys
 
