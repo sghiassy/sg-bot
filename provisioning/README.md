@@ -4,6 +4,12 @@
 
 The HipChat secrets are stored in an encyprted file `secrets.prod.yml`. See [Example](https://github.com/serverless/examples/tree/master/aws-node-env-variables-encrypted-in-a-file) for more info.
 
+```
+# Example Commands
+serverless encrypt --stage staging --password XXXXXXXX
+serverless decrypt --stage prod --password XXXXXXXX
+```
+
 ## AWS Keys
 
 If you're on a new machine, you will need to configure the keys again by running
