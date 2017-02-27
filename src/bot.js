@@ -1,14 +1,46 @@
 'use strict';
 
 const _ = require('lodash');
-const http = require('superagent');
+
 const AWS = require('aws-sdk');
 const dynamo = new AWS.DynamoDB.DocumentClient();
-const HIPCHAT_AUTH_TOKEN = process.env.HIPCHAT_AUTH_TOKEN;
 
+const ListAllController = require('./controllers/listAll');
+const HelloController = require('./controllers/hello');
 
+module.exports.listAll = (event, context, callback) => {
+  ListAllController.getAllEntries((users)=>{});
+};
 
 module.exports.hello = (event, context, callback) => {
+  http
+    .post('https://h34t.hipchat.com/v2/room/3622915/notification')
+    .query({
+      'auth_token': HIPCHAT_AUTH_TOKEN
+    })
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .send({
+      'color': 'green',
+      'message': 'Saying hi from SG Bot',
+      'notify': false,
+      'message_format': 'text'
+    })
+    .end(function(err, res) {
+      const response = {
+        statusCode: err ? 500 : 200,
+        body: JSON.stringify({
+          message: message,
+          err: err,
+          res: res,
+        }),
+      };
+
+      callback(null, response);
+    });
+};
+
+module.exports.reset = (event, context, callback) => {
   const usersName = _.get(event, 'queryStringParameters.name', undefined);
   const points = _.get(event, 'queryStringParameters.points', undefined);
   const message = _.trim(`User:${usersName} gets ${points}points`);

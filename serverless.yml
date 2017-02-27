@@ -1,21 +1,7 @@
-# Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
 
 service: bot
 
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-# frameworkVersion: "=X.X.X"
+frameworkVersion: "=1.6.1"
 
 provider:
   name: aws
@@ -25,7 +11,7 @@ provider:
   runtime: nodejs4.3
 
 functions:
-  bot:
+  hello:
     handler: src/bot.hello
     description: Have the bot say hi to you
     environment:
@@ -34,6 +20,16 @@ functions:
     - http:
         path: hello # path in the url
         method: get
+  listAll:
+    handler: src/bot.listAll
+    description: Have the bot list all users to you
+    environment:
+      HIPCHAT_AUTH_TOKEN: ${self:custom.secrets.HIPCHAT_AUTH_TOKEN}
+    events:
+    - http:
+        path: users # path in the url
+        method: get
+
 
 custom:
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
@@ -43,16 +39,16 @@ resources:
     NicoPointTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Persons
+        TableName: Users
         AttributeDefinitions:
-          - AttributeName: PersonID
+          - AttributeName: UserID
             AttributeType: S
         KeySchema:
-          - AttributeName: PersonID
+          - AttributeName: UserID
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 2
     DynamoDBIamPolicy:
       Type: AWS::IAM::Policy
       DependsOn: NicoPointTable
@@ -65,7 +61,8 @@ resources:
               Action:
                 - dynamodb:GetItem
                 - dynamodb:PutItem
-              Resource: arn:aws:dynamodb:*:*:table/Persons
+                - dynamodb:DeleteItem
+              Resource: arn:aws:dynamodb:*:*:table/Users
         Roles:
           - Ref: IamRoleLambdaExecution
 
