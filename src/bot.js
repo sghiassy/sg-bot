@@ -2,6 +2,8 @@
 
 const _ = require('lodash');
 const http = require('superagent');
+const AWS = require('aws-sdk');
+const dynamo = new AWS.DynamoDB.DocumentClient();
 const HIPCHAT_AUTH_TOKEN = process.env.HIPCHAT_AUTH_TOKEN;
 
 module.exports.hello = (event, context, callback) => {
@@ -29,6 +31,11 @@ module.exports.hello = (event, context, callback) => {
         }),
       };
 
-      callback(null, response);
+      const dbEntry = {
+          TableName: 'Persons',
+          Item: {'1': 'Test'}},
+      };
+
+      dynamo.put(dbEntry, callback(null, response));
     });
 };

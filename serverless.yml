@@ -38,6 +38,37 @@ functions:
 custom:
   secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
 
+resources:
+  Resources:
+    NicoPointTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Persons
+        AttributeDefinitions:
+          - AttributeName: PersonID
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PersonID
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 15
+          WriteCapacityUnits: 15
+    DynamoDBIamPolicy:
+      Type: AWS::IAM::Policy
+      DependsOn: DynamoDbTable
+      Properties:
+        PolicyName: lambda-dynamodb
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+                - dynamodb:PutItem
+              Resource: arn:aws:dynamodb:*:*:table/Persons
+        Roles:
+          - Ref: IamRoleLambdaExecution
+
 plugins:
   - serverless-offline
   - serverless-secrets-plugin

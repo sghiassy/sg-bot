@@ -13,6 +13,7 @@
     "dev": "sls offline start"
   },
   "dependencies": {
+    "aws-sdk": "^2.20.0",
     "lodash": "^4.17.4",
     "serverless-secrets": "^2.0.2",
     "serverless-secrets-plugin": "^0.0.1",
