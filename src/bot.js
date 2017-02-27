@@ -51,8 +51,7 @@ module.exports.hello = (event, context, callback) => {
       var params = {
         TableName: 'Persons',
         Item: {
-          'PersonID': 1,
-          'name': usersName,
+          'PersonID': usersName.toLowerCase(),
           'points': points,
         }
       };
