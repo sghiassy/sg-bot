@@ -55,7 +55,7 @@ resources:
           WriteCapacityUnits: 15
     DynamoDBIamPolicy:
       Type: AWS::IAM::Policy
-      DependsOn: DynamoDbTable
+      DependsOn: NicoPointTable
       Properties:
         PolicyName: lambda-dynamodb
         PolicyDocument:
