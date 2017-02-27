@@ -1,15 +1,24 @@
-# Deploying Setup
+# Nico Bot
 
-## HipChat Keys
+No idea why I created this bot - its really stupid.
 
-The HipChat secrets are stored in an encyprted file `secrets.prod.yml`. See [Example](https://github.com/serverless/examples/tree/master/aws-node-env-variables-encrypted-in-a-file) for more info.
+## Dev Setup & Provisioning
 
-## AWS Keys
+See the [README.md](./provisioning/README.md) in the Provisioning folder
 
-If you're on a new machine, you will need to configure the keys again by running
+## Commands
 
 ```
-serverless config credentials --provider aws --profile sg-bot --key XXXXXXXX --secret XXXXXXX
+/sg delete 50 points from Nico
+/sg add 100 points to Lana
+/sg delete 50 points from me
+/sg add -50 points from me
 ```
 
-The AWS Access Keys are stored in `provisioning/aws_keys.yml`. To decrypt the file you can run `ansible-vault view provisioning/aws_keys.yml`. The password for Ansible-vault is in 1password.
+```
+create:user <string> // create user <string>
+delete:user <string> // delete user <string>
+reset:all <number> // reset all users to <number>
+reset:user:<string> <integer> // reset user <string> to points <integer>
+list:all // lists all users
+```
