@@ -7,11 +7,13 @@
   "author": "Shaheen Ghiassy <shaheen.ghiassy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
+    "deploy:stag": "serverless deploy --stage staging",
     "deploy:prod:fast": "serverless deploy function --stage prod --function bot",
+    "deploy:stag:fast": "serverless deploy function --stage staging --function bot",
     "dev": "export ENV='dev'; sls offline start --stage dev --prefix dev",
-    "log:prod": "serverless logs --stage prod -f bot"
+    "log:prod": "serverless logs --stage prod -f bot",
+    "log:stag": "serverless logs --stage staging -f bot"
   },
   "dependencies": {
     "aws-sdk": "^2.20.0",
