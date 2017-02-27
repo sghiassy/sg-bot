@@ -10,12 +10,13 @@
     "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
     "deploy:prod:fast": "serverless deploy function --stage prod --function bot",
-    "dev": "sls offline start",
+    "dev": "export ENV='dev'; sls offline start --stage dev --prefix dev",
     "log:prod": "serverless logs --stage prod -f bot"
   },
   "dependencies": {
     "aws-sdk": "^2.20.0",
     "lodash": "^4.17.4",
+    "serverless-dynamodb-local": "^0.2.18",
     "serverless-secrets": "^2.0.2",
     "serverless-secrets-plugin": "^0.0.1",
     "superagent": "^3.5.0"

@@ -1,9 +1,10 @@
 const http = require('superagent');
+const HIPCHAT_URL = process.env.HIPCHAT_URL;
 const HIPCHAT_AUTH_TOKEN = process.env.HIPCHAT_AUTH_TOKEN;
 
 module.exports.message = (message, callback) => {
   http
-    .post('https://h34t.hipchat.com/v2/room/3622915/notification')
+    .post(HIPCHAT_URL)
     .query({
       'auth_token': HIPCHAT_AUTH_TOKEN
     })
@@ -16,15 +17,6 @@ module.exports.message = (message, callback) => {
       'message_format': 'text'
     })
     .end(function(err, res) {
-      const response = {
-        statusCode: err ? 500 : 200,
-        body: JSON.stringify({
-          message: message,
-          err: err,
-          res: res,
-        }),
-      };
-
-      callback(null, response);
+      callback(err, res);
     });
 };

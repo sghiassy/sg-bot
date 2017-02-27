@@ -15,6 +15,7 @@ functions:
     handler: src/bot.hello
     description: Have the bot say hi to you
     environment:
+      HIPCHAT_URL: ${self:custom.secrets.HIPCHAT_URL}
       HIPCHAT_AUTH_TOKEN: ${self:custom.secrets.HIPCHAT_AUTH_TOKEN}
     events:
     - http:
@@ -24,6 +25,7 @@ functions:
     handler: src/bot.listAll
     description: Have the bot list all users to you
     environment:
+      HIPCHAT_URL: ${self:custom.secrets.HIPCHAT_URL}
       HIPCHAT_AUTH_TOKEN: ${self:custom.secrets.HIPCHAT_AUTH_TOKEN}
     events:
     - http:
@@ -67,5 +69,6 @@ resources:
           - Ref: IamRoleLambdaExecution
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline
   - serverless-secrets-plugin

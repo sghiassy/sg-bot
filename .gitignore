@@ -33,4 +33,4 @@ npm-debug.log
 .serverless
 
 #secrets
-secrets.prod.yml
+secrets.*.yml
