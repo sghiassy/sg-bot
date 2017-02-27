@@ -33,7 +33,7 @@ module.exports.hello = (event, context, callback) => {
 
       const dbEntry = {
           TableName: 'Persons',
-          Item: {'1': 'Test'}},
+          Item: {'1': 'Test'},
       };
 
       dynamo.put(dbEntry, callback(null, response));

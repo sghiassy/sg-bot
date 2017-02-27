@@ -10,7 +10,8 @@
     "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
     "deploy:prod:fast": "serverless deploy function --stage prod --function bot",
-    "dev": "sls offline start"
+    "dev": "sls offline start",
+    "log:prod": "serverless logs --stage prod -f bot"
   },
   "dependencies": {
     "aws-sdk": "^2.20.0",
