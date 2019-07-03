@@ -17,10 +17,11 @@
     "aws-sdk": "^2.20.0",
     "lodash": "^4.17.4",
     "serverless-secrets": "^2.0.2",
-    "serverless-secrets-plugin": "^0.0.1",
     "superagent": "^3.5.0"
   },
   "devDependencies": {
-    "serverless-offline": "^3.9.0"
+    "serverless": "1.46.1",
+    "serverless-offline": "5.5.1",
+    "serverless-secrets-plugin": "0.0.1"
   }
 }
