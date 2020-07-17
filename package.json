@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.20.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "serverless-secrets": "^2.0.2",
     "superagent": "^3.5.0"
   },
