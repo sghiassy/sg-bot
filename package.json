@@ -14,7 +14,7 @@
     "log:prod": "serverless logs --stage prod -f bot"
   },
   "dependencies": {
-    "aws-sdk": "^2.20.0",
+    "aws-sdk": "^2.814.0",
     "lodash": "^4.17.4",
     "serverless-secrets": "^2.0.2",
     "superagent": "^3.5.0"
